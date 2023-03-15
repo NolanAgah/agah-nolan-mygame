@@ -60,7 +60,7 @@ class Mob(Sprite):
         if self.rect.x < 0:
             print("I'm off the left screen...")
         if self.rect.y < 0:
-            print("I'm off the top screen...")
+            # print("I'm off the top screen...")
             self.vel *= -1
         if self.rect.y > HEIGHT:
             print("I'm off the bottom screen...")
