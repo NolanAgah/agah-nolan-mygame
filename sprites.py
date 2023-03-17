@@ -37,8 +37,15 @@ class Player(Sprite):
         self.vel += self.acc
         self.pos += self.vel + 0.5 * self.acc
         self.rect.center = self.pos
-        if self.rect.x > HEIGHT:
-            print("I'm off the screen...")
+        if self.rect.x > WIDTH:
+            print("I'm off the right screen...")
+        if self.rect.x < 0:
+            print("I'm off the left screen...")
+        if self.rect.y < 0:
+            print("I'm off the top screen...")
+        if self.rect.y > HEIGHT:
+            print("I'm off the bottom screen...")
+
 class Mob(Sprite):
     def __init__(self):
         Sprite.__init__(self)
@@ -51,22 +58,15 @@ class Mob(Sprite):
         self.cofric = 0.1
         self.canjump = False
     def behavior(self):
-        self.acc.y = -MOB_ACC
-        # self.acc.x = -MOB_ACC
-        # self.acc.y = MOB_ACC
-        # self.acc.x = MOB_ACC
-        if self.rect.x > WIDTH:
-            print("I'm off the right screen...")
+        if 750 < self.rect.x < WIDTH:
+            self.vel.x *= -1
         if self.rect.x < 0:
-            print("I'm off the left screen...")
+            self.vel.x *= -1
+        if 550 < self.rect.y < HEIGHT:
+            self.vel.y *= -1
         if self.rect.y < 0:
-            # print("I'm off the top screen...")
-            self.vel *= -1
-        if self.rect.y > HEIGHT:
-            print("I'm off the bottom screen...")
+            self.vel.y *= -1
     def update(self):
-        self.acc = self.vel * MOB_FRICTION
         self.behavior()
-        self.vel += self.acc
-        self.pos += self.vel + 0.5 * self.acc
+        self.pos += self.vel
         self.rect.center = self.pos

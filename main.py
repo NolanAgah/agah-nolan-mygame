@@ -7,6 +7,8 @@ import random
 
 import os
 
+from random import randint
+
 # import settings
 
 from settings import *
@@ -34,8 +36,19 @@ clock = pg.time.Clock()
 
 all_sprites = pg.sprite.Group()
 enemies = pg.sprite.Group()
+pewpews = pg.sprite.Group()
+
+# player is instantiated here
 player = Player()
 invader = Mob()
+invader.vel = vec(randint(8,16),randint(8,16))
+
+for i in range(0,10):
+    m = Mob()
+    m.vel = vec(randint(8,16),randint(8,16))
+    all_sprites.add(m)
+    enemies.add(m)
+
 # testSprite = Sprite()
 # testSprite.image = pg.Surface((50,50))
 # testSprite.image.fill(GREEN)
@@ -44,24 +57,25 @@ invader = Mob()
 all_sprites.add(player)
 all_sprites.add(invader)
 # all_sprites.add(testSprite)
+
 # game loop
 
+RUNNING = True
 
-while True:
+while RUNNING:
     #  keep loop running at the right speed
     clock.tick(FPS)
     ### process input events section of game loop
     for event in pg.event.get():
         # check for window closing
         if event.type == pg.QUIT:
-            pg.quit()
-            quit()
+            RUNNING = False
             # break
     # print(get_mouse_now())
     ### update section of game loop (if updates take longer the 1/30th of a second, you will get laaaaag...)
     all_sprites.update()
 
-    blocks_hit_list = pg.sprite.spritecollide(player, enemies, True)
+    blocks_hit_list = pg.sprite.spritecollide(player, enemies, False)
     for block in blocks_hit_list:
         # print(enemies)
         pass
