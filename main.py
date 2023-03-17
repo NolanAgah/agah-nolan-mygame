@@ -40,8 +40,10 @@ pewpews = pg.sprite.Group()
 
 # player is instantiated here
 player = Player()
+player.rect.x = 5
 invader = Mob()
 invader.vel = vec(randint(8,16),randint(8,16))
+invader.image.fill((0,0,255))
 
 for i in range(0,10):
     m = Mob()
