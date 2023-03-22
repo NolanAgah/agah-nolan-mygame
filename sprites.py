@@ -6,7 +6,9 @@ from pygame.sprite import Sprite
 
 from settings import *
 
+
 vec = pg.math.Vector2
+
 
 # create a player class
 
