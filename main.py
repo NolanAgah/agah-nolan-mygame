@@ -7,6 +7,8 @@ import random
 
 import os
 
+from os import path
+
 from random import randint
 
 # import settings
@@ -32,7 +34,9 @@ pg.init()
 pg.mixer.init()
 screen = pg.display.set_mode((WIDTH, HEIGHT))
 pg.display.set_caption("My first game...")
-clock = pg.time.Clock() 
+clock = pg.time.Clock()
+
+player_img = pg.image.load(path.join(img_folder, "bell-ar-man.png")).convert()
 
 all_sprites = pg.sprite.Group()
 enemies = pg.sprite.Group()
