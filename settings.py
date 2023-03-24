@@ -1,6 +1,7 @@
 # file created by NOLAN AGAH
 
 # define colors
+WHITE = (255,255,255)
 BLACK = (0,0,0)
 BLUE = (50,50,255)
 RED = (255,50,50)
