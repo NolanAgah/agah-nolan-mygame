@@ -14,9 +14,8 @@ from random import randint
 # import settings
 
 from settings import *
-
 from sprites import *
-
+from random import randint
 # from pg.sprite import Sprite
 
 # set up assets folders
@@ -33,7 +32,7 @@ class Game:
         pg.display.set_caption("My Game...")
         self.clock = pg.time.Clock()
         self.running = True
-    # method to create a new game
+    # method to create a new game...
     def new(self):
             self.score = 0
             self.all_sprites = pg.sprite.Group()
@@ -42,11 +41,15 @@ class Game:
             # instantiates player class from sprites file, and passes this game class as
             # an argument
             self.player = Player(self)
+            # instantiate a platform
+            self.plat1 = Platform(0,HEIGHT-25, WIDTH, 25)
             self.all_sprites.add(self.player)
-            for i in range(1,10):
-                e = Mob()
-                self.all_sprites.add(e)
-            self.run()
+            self.all_sprites.add(self.plat1)
+            self.platforms.add(self.plat1)
+            # for i in range(1,10):
+            #     e = Mob()
+            #     self.all_sprites.add(e)
+            self.run()  
     def run(self):
         self.playing = True
         while self.playing:
@@ -77,9 +80,15 @@ class Game:
     #     return (x,y)
     def update(self):
         self.all_sprites.update()
+        if self.player.vel.y > 0:
+            hits = pg.sprite.spritecollide(self.player, self.platforms, False)
+            if hits:
+                print("i've collide with a platform")
+                self.player.pos.y = hits[0].rect.top
+                self.player.vel.y = 0
     def draw(self):
         self.screen.fill(BLUE)
-        self.draw_text("Welcome!", 42, WHITE, WIDTH/2, HEIGHT/10)
+        self.draw_text("Hello there!", 42, WHITE, WIDTH/2, HEIGHT/10)
         self.all_sprites.draw(self.screen)
         pg.display.flip()
 
