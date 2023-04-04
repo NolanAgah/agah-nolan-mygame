@@ -3,7 +3,10 @@ import pygame as pg
 from pygame.sprite import Sprite
 from settings import *
 from random import randint
+import os
 
+game_folder = os.path.dirname(__file__)
+scissors_image = pg.image.load(os.path.join(game_folder, 'scissors.png')).convert()
 
 vec = pg.math.Vector2
 
@@ -74,6 +77,15 @@ class Player(Sprite):
         self.vel += self.acc
         self.pos += self.vel + 0.5 * self.acc
         self.rect.midbottom = self.pos
+
+class Coin(Sprite):
+    def __init__(self,x,y):
+        Sprite.__init__(self)
+        self.width = 35
+        self.height = 45
+        self.image_fill = WHITE
+        hits
+
 
 class Mob(Sprite):
     def __init__(self,width,height, color):
