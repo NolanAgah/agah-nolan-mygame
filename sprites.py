@@ -5,8 +5,7 @@ from settings import *
 from random import randint
 import os
 
-game_folder = os.path.dirname(__file__)
-scissors_image = pg.image.load(os.path.join(game_folder, 'scissors.png')).convert()
+# game_folder = os.path.dirname(__file__)
 
 vec = pg.math.Vector2
 
@@ -83,8 +82,13 @@ class Coin(Sprite):
         Sprite.__init__(self)
         self.width = 35
         self.height = 45
+        self.image = pg.Surface((self.width, self.height))
         self.image_fill = WHITE
-        hits
+    # def player_collide(self):
+    #     hits = pg.sprite.spritecollide(self, self.game.coins,True)
+    #     if hits:
+    #         self.game.score += 1
+
 
 
 class Mob(Sprite):

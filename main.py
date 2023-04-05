@@ -38,8 +38,10 @@ class Game:
         # starting a new game
         self.score = 0
         self.all_sprites = pg.sprite.Group()
+        self.coins = pg.sprite.Group()
         self.platforms = pg.sprite.Group()
         self.enemies = pg.sprite.Group()
+        self.coin = Coin(350,200)
         self.player = Player(self)
         self.plat1 = Platform(WIDTH, 50, 0, HEIGHT-50, (150,150,150), "normal")
         # self.plat1 = Platform(WIDTH, 50, 0, HEIGHT-50, (150,150,150), "normal")
