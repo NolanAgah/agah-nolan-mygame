@@ -19,7 +19,7 @@ from settings import *
 from sprites import *
 from os import path
 import sys
-import time
+from time import sleep
 
 # set up assets folders
 game_folder = os.path.dirname(__file__)
@@ -136,7 +136,7 @@ class Game:
             draw_text(self.screen, "Game Over", 50, WIDTH / 2, HEIGHT / 2, RED)
             pg.display.flip()
             # pause the game for 2 seconds
-            time.sleep(2)
+            sleep(2)
             # close the window
             pg.quit()
             sys.exit()
