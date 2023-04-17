@@ -3,6 +3,7 @@
     # https://www.youtube.com/watch?v=wfcWRAxRVBA
     # https://www.youtube.com/watch?v=JLUqOmE9veI
     # https://www.youtube.com/watch?v=0TicWQno99U
+    # Krisjan Harnish '24
 
 '''
 My goal is:

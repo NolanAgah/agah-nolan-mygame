@@ -193,6 +193,9 @@ def check_coin_collision(game):
         sound_folder = os.path.join(os.path.dirname(__file__), "sounds")
         coin_pickup_sound = os.path.join(sound_folder, 'coin_collect.mp3')
         pg.mixer.Sound(coin_pickup_sound).play()
+        # got this from source--dont rly know why it's needed
+        if game.score % 10 == 0:
+            game.player.become_invincible()
         # spawn a new coin at a random location
         x = randint(50, WIDTH - 50)
         y = randint(50, HEIGHT - 100)
