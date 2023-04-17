@@ -49,6 +49,8 @@ class Game:
     def load_data(self):
         self.coin_img = pg.image.load(path.join(img_folder, "coin.png")).convert()
         self.coin_sound = pg.mixer.Sound(path.join(snd_folder, "coin_collect.mp3"))
+        self.hit_sound = pg.mixer.Sound(path.join(snd_folder, "hurt.mp3"))
+        self.death_sound = pg.mixer.Sound(path.join(snd_folder, "death.mp3"))
 
     def new(self):
         # starting a new game
@@ -135,6 +137,7 @@ class Game:
         if self.player.health <= 0:
             # render "Game Over" text aon the screen
             draw_text(self.screen, "Game Over", 50, WIDTH / 2, HEIGHT / 2, RED)
+            pg.mixer.Sound(self.death_sound).play()
             pg.display.flip()
             # pause the game for 2 seconds
             sleep(2)

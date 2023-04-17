@@ -92,6 +92,9 @@ class Player(Sprite):
                 self.game.player.health -= 10
                 if self.game.player.health < 0:
                     self.game.player.health = 0
+            sound_folder = os.path.join(os.path.dirname(__file__), "sounds")
+            hurt_sound = os.path.join(sound_folder, 'hurt.mp3')
+            pg.mixer.Sound(hurt_sound).play()
 
 
     def update(self):
